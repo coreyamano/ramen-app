@@ -1,6 +1,8 @@
 <template>
   <div class="ordereditems-index">
     <h1>{{ message }}</h1>
+    <button>Back to Menu</button>
+    <button>Check Out</button>
     <div v-for="ordered_item in ordered_items" v-bind:key="ordered_item.id">
       <p>Item: {{ ordered_item.product_item_name }}</p>
       <p>Price: {{ ordered_item.product_price }}</p>

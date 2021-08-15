@@ -5,7 +5,7 @@ import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import ProductsIndex from "../views/Menu/ProductsIndex.vue";
-import OrderedItemsShow from "../views/Cart/OrderedItemsShow.vue";
+import OrderedItemsIndex from "../views/Cart/OrderedItemsIndex.vue";
 import ChecksShow from "../views/Checks/ChecksShow.vue";
 Vue.use(VueRouter);
 
@@ -14,15 +14,6 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   { path: "/signup", name: "signup", component: Signup },
   { path: "/login", name: "login", component: Login },
@@ -34,8 +25,8 @@ const routes = [
   },
   {
     path: "/ordered_items",
-    name: "OrderedItemsShow",
-    component: OrderedItemsShow,
+    name: "OrderedItemsIndex",
+    component: OrderedItemsIndex,
   },
   {
     path: "/checks",

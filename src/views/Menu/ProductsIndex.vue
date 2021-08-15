@@ -6,6 +6,7 @@
       <p>{{ product.item_name }}</p>
       <p>{{ product.description }}</p>
       <p>{{ product.price }}</p>
+      <button v-on:click="orderedItemsCreate(product)">Add to Cart</button>
       <br />
       <!-- <p>{{ product.image }}</p> -->
       <!-- <router-link v-bind:to="`/products/${product.id}`">
@@ -24,6 +25,7 @@ export default {
     return {
       message: "Full Menu",
       products: [],
+      errors: [],
       // searchTerm: "",
     };
   },
@@ -36,6 +38,23 @@ export default {
         console.log(response.data);
         this.products = response.data;
       });
+    },
+    orderedItemsCreate: function (product) {
+      var params = {
+        item_name: product.item_name,
+        product_id: product.id,
+        tab_id: 3,
+        // check_id: 
+      };
+      axios
+        .post("/ordered_items", params)
+        .then((response) => {
+          console.log(response.data);
+          this.$router.push("/ordered_items");
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
     },
   },
 };
