@@ -2,10 +2,11 @@
   <div class="checks-index">
     <h1>{{ message }}</h1>
     <div v-for="check in checks" v-bind:key="check.id">
-      <p>{{ check.id }}</p>
-      <p>{{ check.subtotal }}</p>
-      <p>{{ check.tax }}</p>
-      <p>{{ check.total }}</p>
+      <p>Check Number: {{ check.id }}</p>
+      <p>Subtotal: {{ check.subtotal }}</p>
+      <p>Tax: {{ check.tax }}</p>
+      <p>Total: {{ check.total }}</p>
+      <p>Status: {{ check.status }}</p>
       <br />
       <!-- <p>{{ product.image }}</p> -->
       <!-- <router-link v-bind:to="`/products/${product.id}`">
@@ -34,7 +35,7 @@ export default {
     indexChecks: function () {
       axios.get("/checks").then((response) => {
         console.log(response.data);
-        this.products = response.data;
+        this.checks = response.data;
       });
     },
   },

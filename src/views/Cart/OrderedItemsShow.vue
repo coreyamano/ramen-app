@@ -2,10 +2,11 @@
   <div class="ordereditems-index">
     <h1>{{ message }}</h1>
     <div v-for="ordered_item in ordered_items" v-bind:key="ordered_item.id">
-      <p>{{ ordered_item.product_id }}</p>
-      <p>{{ ordered_item.quantity }}</p>
-      <p>{{ ordered_item.status }}</p>
-      <p>{{ ordered_item.dining_option }}</p>
+      <p>Item: {{ ordered_item.product_item_name }}</p>
+      <p>Price: {{ ordered_item.product_price }}</p>
+      <p>Quantity: {{ ordered_item.quantity }}</p>
+      <p>Status: {{ ordered_item.status }}</p>
+      <p>Dining Option: {{ ordered_item.dining_option }}</p>
       <br />
       <!-- <p>{{ product.image }}</p> -->
       <!-- <router-link v-bind:to="`/products/${product.id}`">
