@@ -45,6 +45,7 @@ export default {
     return {
       message: "Your Order",
       ordered_items: [],
+      dining_option: null,
       // searchTerm: "",
     };
   },

@@ -5,9 +5,10 @@
       <div class="card-body">
         <h5 class="card-title">{{ product.item_name }}</h5>
           <p class="card-text">
-        {{ product.description }}
+          {{ product.description }}
           ${{ product.price }}
-        </p>
+          </p>
+          <!-- Special Instructions: <input type="text" v-model="customer_note"> -->
           <a class="btn btn-primary" v-on:click="orderedItemsCreate(product)"> Add to Cart </a>
       </div>
     </div>
@@ -29,8 +30,10 @@ export default {
       message: "Full Menu",
       products: [],
       errors: [],
+      // quantity: null,
       tab_id: "",
-      customer_note: "",// searchTerm: "",
+      // customer_note: "",
+      // searchTerm: "",
     };
   },
   created: function () {
@@ -48,9 +51,9 @@ export default {
         item_name: product.item_name,
         product_id: product.id,
         tab_id: 4,
-        quantity: 1,
+        quantity: 1, //this.quantity
         product_price: product.price,
-        customer_note: this.customer_note,
+        // customer_note: this.customer_note,
 
         // check_id: 
       };

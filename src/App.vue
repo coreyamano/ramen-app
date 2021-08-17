@@ -46,12 +46,12 @@
                 Account
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Sign Up</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#">Log In</a></li>
+                <li><a class="dropdown-item" href="/login">Log In</a></li>
                 <li>
-                  <a class="dropdown-item" href="#">Log Out</a>
+                  <a class="dropdown-item" href="/login">Log Out</a>
                 </li>
+                 <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="/signup">Sign Up</a></li>
               </ul>
             </li>
           </ul>
