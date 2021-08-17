@@ -38,6 +38,17 @@ export default {
         this.checks = response.data;
       });
     },
+    // checksCreate: function () {
+    //   axios
+    //     .post("/checks")
+    //     .then((response) => {
+    //       console.log(response.data);
+    //       this.$router.push("/checks");
+    //     })
+    //     .catch((error) => {
+    //       this.errors = error.response.data.errors;
+    //     });
+    // },
   },
 };
 </script>

@@ -1,6 +1,7 @@
 <template>
   <div class="products-index">
     <h1>{{ message }}</h1>
+
     <div v-for="product in products" v-bind:key="product.id">
       <p>{{ product.id }}</p>
       <p>{{ product.item_name }}</p>
@@ -26,7 +27,7 @@ export default {
       message: "Full Menu",
       products: [],
       errors: [],
-      // searchTerm: "",
+      tab_id: ""// searchTerm: "",
     };
   },
   created: function () {
@@ -43,14 +44,17 @@ export default {
       var params = {
         item_name: product.item_name,
         product_id: product.id,
-        tab_id: 3,
+        tab_id: 4,
+        quantity: 1,
+        product_price: product.price,
+
         // check_id: 
       };
       axios
         .post("/ordered_items", params)
         .then((response) => {
           console.log(response.data);
-          this.$router.push("/ordered_items");
+          // this.$router.push("/ordered_items");
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
