@@ -1,19 +1,21 @@
 <template>
   <div class="products-index">
     <h1>{{ message }}</h1>
-
-    <div v-for="product in products" v-bind:key="product.id">
-      <p>{{ product.id }}</p>
-      <p>{{ product.item_name }}</p>
-      <p>{{ product.description }}</p>
-      <p>{{ product.price }}</p>
-      <button v-on:click="orderedItemsCreate(product)">Add to Cart</button>
-      <br />
+    <div class="card w-50" v-for="product in products" v-bind:key="product.id">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.item_name }}</h5>
+          <p class="card-text">
+        {{ product.description }}
+          ${{ product.price }}
+        </p>
+          <a class="btn btn-primary" v-on:click="orderedItemsCreate(product)"> Add to Cart </a>
+      </div>
+    </div>
       <!-- <p>{{ product.image }}</p> -->
       <!-- <router-link v-bind:to="`/products/${product.id}`">
         <img v-bind:src="products.image" /> -->
       <!-- </router-link> -->
-    </div>
+    
   </div>
 </template>
 

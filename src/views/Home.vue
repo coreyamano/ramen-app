@@ -2,6 +2,7 @@
   <div class="home">
     <h1>{{ message }}</h1>
     <h4>Powered by TurningTables</h4>
+    
   </div>
 </template>
 

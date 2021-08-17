@@ -1,18 +1,35 @@
 <template>
   <div class="checks-index">
     <h1>{{ message }}</h1>
-    <div v-for="check in checks" v-bind:key="check.id">
-      <p>Check Number: {{ check.id }}</p>
+      <div class="row">
+        <div class="col-sm-6" v-for="check in checks" v-bind:key="check.id">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"> Check: {{ check.id }}</h5>
+              <p class="card-text">
+              Subtotal: {{ check.subtotal }}
+              Tax: {{ check.tax }}
+              Total: {{ check.total }}
+              Status: {{ check.status }}
+              </p>
+              <a href="#" class="btn btn-primary">Payment</a>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- <div v-for="check in checks" v-bind:key="check.id"> -->
+      <!-- <p>Check Number: {{ check.id }}</p>
       <p>Subtotal: {{ check.subtotal }}</p>
       <p>Tax: {{ check.tax }}</p>
       <p>Total: {{ check.total }}</p>
       <p>Status: {{ check.status }}</p>
-      <br />
+      <br /> -->
       <!-- <p>{{ product.image }}</p> -->
       <!-- <router-link v-bind:to="`/products/${product.id}`">
         <img v-bind:src="products.image" /> -->
       <!-- </router-link> -->
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 
