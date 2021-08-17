@@ -29,7 +29,8 @@ export default {
       message: "Full Menu",
       products: [],
       errors: [],
-      tab_id: ""// searchTerm: "",
+      tab_id: "",
+      customer_note: "",// searchTerm: "",
     };
   },
   created: function () {
@@ -49,6 +50,7 @@ export default {
         tab_id: 4,
         quantity: 1,
         product_price: product.price,
+        customer_note: this.customer_note,
 
         // check_id: 
       };

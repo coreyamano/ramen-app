@@ -1,10 +1,10 @@
 <template>
   <div class="ordereditems-index">
     <h1>{{ message }}</h1>
-    <button v-if="ordered_items.length !== 0" v-on:click="checksCreate()">Check Out</button>
+    <a v-if="ordered_items.length !== 0" v-on:click="checksCreate()" class="btn btn-primary">Check Out</a>
     <br />
     <p v-if="ordered_items.length === 0">There's nothing in your order!</p>
-    <button>Back to Menu</button>
+    <a href="/products" class="btn btn-secondary">Back to Menu</a>
     <br />
       <form v-if="ordered_items.length !== 0">
       <p>Please select your dining experience:</p>
@@ -14,7 +14,7 @@
         <label for="choice-no">Take Out</label>
         <br />
         <br />
-        <button id="btn">Place Order</button>
+        <a class="btn btn-success">Place Order</a>
       </form>
     <br />
     <div v-for="ordered_item in ordered_items" v-bind:key="ordered_item.id">
@@ -24,7 +24,9 @@
       <p>Status: {{ ordered_item.status }}</p>
       <p>Dining Option: {{ ordered_item.dining_option }}</p>
       <br />
-      <button v-on:click="orderedItemDestroy(ordered_item)">Remove Item</button>
+      <form>
+      <button v-on:click="orderedItemDestroy(ordered_item)" class="btn btn-danger">Remove Item</button>
+      </form>
       <!-- <p>{{ product.image }}</p> -->
       <!-- <router-link v-bind:to="`/products/${product.id}`">
         <img v-bind:src="products.image" /> -->
