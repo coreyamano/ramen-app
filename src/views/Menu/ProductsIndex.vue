@@ -8,7 +8,10 @@
           {{ product.description }}
           ${{ product.price }}
           </p>
-          <!-- Special Instructions: <input type="text" v-model="customer_note"> -->
+          Quantity: <input type="number" v-model="product.quantity">
+          <br/>
+          Special Instructions: <input type="text" v-model="product.customer_note">
+          <br/>
           <a class="btn btn-primary" v-on:click="orderedItemsCreate(product)"> Add to Cart </a>
       </div>
     </div>
@@ -32,7 +35,6 @@ export default {
       errors: [],
       // quantity: null,
       tab_id: "",
-      // customer_note: "",
       // searchTerm: "",
     };
   },
@@ -51,9 +53,9 @@ export default {
         item_name: product.item_name,
         product_id: product.id,
         tab_id: 4,
-        quantity: 1, //this.quantity
+        quantity: (product.quantity || 1),
         product_price: product.price,
-        // customer_note: this.customer_note,
+        customer_note: product.customer_note,
 
         // check_id: 
       };
@@ -69,4 +71,6 @@ export default {
     },
   },
 };
+
+
 </script>

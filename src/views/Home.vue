@@ -12,7 +12,7 @@
 export default {
   data: function () {
     return {
-      message: "Welcome Ramen Land!",
+      message: "Welcome to Ramen Land!",
     };
   },
   created: function () {},

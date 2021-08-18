@@ -1,13 +1,14 @@
 <template>
   <div class="ordereditems-index">
     <h1>{{ message }}</h1>
-    <a v-if="ordered_items.length !== 0" v-on:click="checksCreate()" class="btn btn-primary">Check Out</a>
-    <br />
     <p v-if="ordered_items.length === 0">There's nothing in your order!</p>
     <a href="/products" class="btn btn-secondary">Back to Menu</a>
     <br />
+    <a v-if="ordered_items.length !== 0" v-on:click="checksCreate()" class="btn btn-primary">Check Out</a>
+    <br />
+
       <form v-if="ordered_items.length !== 0">
-      <p>Please select your dining experience:</p>
+      <h3>Please select your dining experience:</h3>
         <input type="radio" name="choice" value="Dine In" id="choice-dine-in"> 
         <label for="choice-yes">Dine In</label>
         <input type="radio" name="choice" value="Take Out" id="choice-take-out">
@@ -15,7 +16,21 @@
         <br />
         <br />
         <a class="btn btn-success">Place Order</a>
+        <!-- v-on:click="orderedItemsUpdate()" -->
       </form>
+
+      <!-- <form v-if="ordered_items.length !== 0">
+      <h3>Please select your dining experience:</h3>
+        <input type="radio" name="choice" value="Dine In" id="choice-dine-in" v-model="ordered_item.dining_option"> 
+        <label for="choice-yes">Dine In</label>
+        <input type="radio" name="choice" value="Take Out" id="choice-take-out" v-model="ordered_item.dining_option">
+        <label for="choice-no">Take Out</label>
+        <br />
+        <br />
+        <a class="btn btn-success">Place Order</a>
+        v-on:click="orderedItemsUpdate()"
+      </form> -->
+
     <br />
     <div v-for="ordered_item in ordered_items" v-bind:key="ordered_item.id">
       <p>Item: {{ ordered_item.product_item_name }}</p>
@@ -23,6 +38,7 @@
       <p>Quantity: {{ ordered_item.quantity }}</p>
       <p>Status: {{ ordered_item.status }}</p>
       <p>Dining Option: {{ ordered_item.dining_option }}</p>
+      <p>Customer Note: {{ ordered_item.customer_note }}</p>
       <br />
       <form>
       <button v-on:click="orderedItemDestroy(ordered_item)" class="btn btn-danger">Remove Item</button>
