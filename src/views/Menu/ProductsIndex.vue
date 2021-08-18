@@ -1,25 +1,40 @@
 <template>
   <div class="products-index">
     <h1>{{ message }}</h1>
-    <div class="card w-50" v-for="product in products" v-bind:key="product.id">
-      <div class="card-body">
-        <h5 class="card-title">{{ product.item_name }}</h5>
-          <p class="card-text">
-          {{ product.description }}
-          ${{ product.price }}
-          </p>
-          Quantity: <input type="number" v-model="product.quantity">
-          <br/>
-          Special Instructions: <input type="text" v-model="product.customer_note">
-          <br/>
-          <a class="btn btn-primary" v-on:click="orderedItemsCreate(product)"> Add to Cart </a>
-      </div>
-    </div>
-      <!-- <p>{{ product.image }}</p> -->
-      <!-- <router-link v-bind:to="`/products/${product.id}`">
-        <img v-bind:src="products.image" /> -->
-      <!-- </router-link> -->
-    
+        <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div class="col mb-5" v-for="product in products" v-bind:key="product.id">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <router-link v-bind:to="`/products/${product.id}`">
+                            <img class="card-img-top" v-bind:src="product.image" alt="..." />
+                        </router-link>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{ product.item_name }}</h5>
+                                <!-- Product price-->
+                                {{ product.description }}
+                                <br/>
+                                ${{ product.price }}
+                            </div>
+                        </div>
+                        Quantity: <input type="number" v-model="product.quantity">
+                        <br/>
+                        Special Instructions: <input type="text" v-model="product.customer_note">
+                        <br/>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" v-on:click="orderedItemsCreate(product)">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
   </div>
 </template>
 
