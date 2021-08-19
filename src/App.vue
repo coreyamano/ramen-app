@@ -24,9 +24,9 @@
         </div>
     </nav>
     <!-- Header-->
-    <header class="bg-dark py-5">
+    <header class="bg-dark py-5" style='height: 350px; background-image: url("https://cdn10.bostonmagazine.com/wp-content/uploads/sites/2/2016/10/Pabu-bar-lounge.jpg");'>
         <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
+            <div class="text-center text-white" style="margin: auto;">
                 <h1 class="display-4 fw-bolder">Ramen Land</h1>
                 <p class="lead fw-normal text-white-50 mb-0">San Fracisco, CA</p>
             </div>

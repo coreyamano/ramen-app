@@ -1,6 +1,8 @@
 <template>
   <div class="checks-index">
+  <br/>
     <h1 style="margin: auto;">{{ message }}</h1>
+    <br/>
       <div class="card text-center" style="width: 50%; margin: auto;" v-for="check in checks" v-bind:key="check.id">
         <div class="card-header">
           Ramen Land Check
@@ -9,11 +11,14 @@
             <h5 class="card-title"> Check: {{ check.id }}</h5>
             <p class="card-text">
             Subtotal: {{ check.subtotal }}
+            <br/>
             Tax: {{ check.tax }}
+            <br/>
             Total: {{ check.total }}
+            <br/>
             Status: {{ check.status }}
             </p>
-            <a href="#" class="btn btn-primary">Payment</a>
+            <a href="#" class="btn btn-primary">Pay Now</a>
           </div>
           <div class="card-footer text-muted">
             Thank you! Please Come Again!

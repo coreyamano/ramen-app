@@ -232,6 +232,16 @@ input[type="radio"] {
   margin-left: 1em;
 }
 
+input[type="text"] {
+  margin: auto;
+  
+}
+
+input[type="number"] {
+  margin: auto;
+}
+
+
 sub {
   bottom: -0.25em;
 }

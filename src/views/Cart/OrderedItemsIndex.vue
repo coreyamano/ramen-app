@@ -59,31 +59,16 @@
             <br/>
             Special Instructions: <input type="text" v-model="ordered_item.customer_note">
           </p>
-          <!-- <form>
-            <button v-on:click="orderedItemDestroy(ordered_item)" class="btn btn-danger">Remove Item</button>
-          </form> -->
           <form>
-            <button v-on:click="orderedItemDestroy(ordered_item)" class="btn btn-danger">Remove Item</button>
+            <button v-on:click="updateOrderedItem(ordered_item)" class="btn btn-warning btn-sm">Update Item</button>
+          </form>
+          <form style="margin: 0.3em;">
+            <button v-on:click="orderedItemDestroy(ordered_item)" class="btn btn-danger btn-sm">Remove Item</button>
           </form>
         </div>
       </div>
     </div>
-    <!-- <div v-for="ordered_item in ordered_items" v-bind:key="ordered_item.id">
-      <p>Item: {{ ordered_item.product_item_name }}</p>
-      <p>Price: {{ ordered_item.product_price }}</p>
-      <p>Quantity: {{ ordered_item.quantity }}</p>
-      <p>Status: {{ ordered_item.status }}</p>
-      <p>Dining Option: {{ ordered_item.dining_option }}</p>
-      <p>Customer Note: {{ ordered_item.customer_note }}</p>
-      <br />
-      <form>
-      <button v-on:click="orderedItemDestroy(ordered_item)" class="btn btn-danger">Remove Item</button>
-      </form> -->
-      <!-- <p>{{ product.image }}</p> -->
-      <!-- <router-link v-bind:to="`/products/${product.id}`">
-        <img v-bind:src="products.image" /> -->
-      <!-- </router-link> -->
-    <!-- </div> -->
+
   </div>
 </template>
 
@@ -98,6 +83,8 @@ export default {
       message: "Your Order",
       ordered_items: [],
       dining_option: null,
+      the_ordered_item: {},
+      errors: [],
       // searchTerm: "",
     };
   },
@@ -128,6 +115,22 @@ export default {
         this.$routes.push("/ordered_items");
       });
     },
+    updateOrderedItem: function (ordered_item) {
+      var editOrderedItemParams = {
+        quantity: ordered_item.quantity,
+        customer_note: ordered_item.customer_note,
+      };;
+      axios
+        .patch("/ordered_items/" + ordered_item.id, editOrderedItemParams)
+        .then((response) => {
+          console.log("ordered item update", response);
+          this.$router.push("/ordered_items");
+        })
+        .catch((error) => {
+          console.log("ordered item update error", error.response);
+          this.errors = error.response.data.errors;
+        });
+    }
   },
 };
 </script>

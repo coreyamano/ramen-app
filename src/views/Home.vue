@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
-    <h4>Powered by TurningTables</h4>
+    
     
   </div>
 </template>
@@ -12,7 +12,7 @@
 export default {
   data: function () {
     return {
-      message: "Welcome to Ramen Land!",
+      message: "Experience World Renowned Ramen",
     };
   },
   created: function () {},
