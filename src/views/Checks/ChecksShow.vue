@@ -1,22 +1,25 @@
 <template>
   <div class="checks-index">
-    <h1>{{ message }}</h1>
-      <div class="row">
-        <div class="col-sm-6" v-for="check in checks" v-bind:key="check.id">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"> Check: {{ check.id }}</h5>
-              <p class="card-text">
-              Subtotal: {{ check.subtotal }}
-              Tax: {{ check.tax }}
-              Total: {{ check.total }}
-              Status: {{ check.status }}
-              </p>
-              <a href="#" class="btn btn-primary">Payment</a>
-            </div>
-          </div>
+    <h1 style="margin: auto;">{{ message }}</h1>
+      <div class="card text-center" style="width: 50%; margin: auto;" v-for="check in checks" v-bind:key="check.id">
+        <div class="card-header">
+          Ramen Land Check
         </div>
-    </div>
+          <div class="card-body">
+            <h5 class="card-title"> Check: {{ check.id }}</h5>
+            <p class="card-text">
+            Subtotal: {{ check.subtotal }}
+            Tax: {{ check.tax }}
+            Total: {{ check.total }}
+            Status: {{ check.status }}
+            </p>
+            <a href="#" class="btn btn-primary">Payment</a>
+          </div>
+          <div class="card-footer text-muted">
+            Thank you! Please Come Again!
+          </div>
+      </div>
+  </div>
 
     <!-- <div v-for="check in checks" v-bind:key="check.id"> -->
       <!-- <p>Check Number: {{ check.id }}</p>
@@ -30,7 +33,7 @@
         <img v-bind:src="products.image" /> -->
       <!-- </router-link> -->
     <!-- </div> -->
-  </div>
+
 </template>
 
 <style></style>
@@ -40,7 +43,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      message: "All Checks",
+      message: "Check Out",
       checks: [],
       // searchTerm: "",
     };

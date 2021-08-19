@@ -1,5 +1,5 @@
 <template>
-  <div class="products-index">
+  <div class="products-index" style="margin: auto;">
     <h1>{{ message }}</h1>
         <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
