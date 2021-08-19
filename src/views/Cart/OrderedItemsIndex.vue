@@ -11,16 +11,15 @@
     <br/>
     <br/>
 
-      <form v-if="ordered_items.length !== 0">
+      <form v-if="ordered_items.length !== 0" >
       <h3>Please select your dining experience:</h3>
-        <input type="radio" name="choice" value="Dine In" id="choice-dine-in"> 
+        <input type="radio" name="dining_option" value="Dine In" id="choice-dine-in" v-model="dining_option"> 
         <label for="choice-yes">Dine In</label>
-        <input type="radio" name="choice" value="Take Out" id="choice-take-out">
+        <input type="radio" name="dining_option" value="Take Out" id="choice-take-out" v-model="dining_option">
         <label for="choice-no">Take Out</label>
         <br />
         <br />
-        <a class="btn btn-success">Place Order</a>
-        <!-- v-on:click="orderedItemsUpdate()" -->
+        <a v-on:click="updateForKitchen(the_item)" class="btn btn-success">Place Order</a>
       </form>
 
       <!-- <form v-if="ordered_items.length !== 0">
@@ -47,6 +46,8 @@
             Quantity: {{ ordered_item.quantity }}
             <br/>
             Status: {{ ordered_item.status }}
+            <br/>
+            Dining Option: {{ ordered_item.dining_option }}
             <br/>
             Note: {{ ordered_item.customer_note }}
             </p>
@@ -115,6 +116,7 @@ export default {
         this.$routes.push("/ordered_items");
       });
     },
+
     updateOrderedItem: function (ordered_item) {
       var editOrderedItemParams = {
         quantity: ordered_item.quantity,
@@ -122,6 +124,28 @@ export default {
       };;
       axios
         .patch("/ordered_items/" + ordered_item.id, editOrderedItemParams)
+        .then((response) => {
+          console.log("ordered item update", response);
+          this.$router.push("/ordered_items");
+        })
+        .catch((error) => {
+          console.log("ordered item update error", error.response);
+          this.errors = error.response.data.errors;
+        });
+    },
+    updateForKitchen: function (the_item) {
+      for (this.the_ordered_item in this.ordered_items) {
+        if (this.the_ordered_item.status === "ordered") {
+          console.log(this.the_ordered_item.id)
+          var editItemParams = {
+          status: "sent",
+          quantity: this.the_ordered_item.quantity,
+          dining_option: the_item.dining_option,
+          };
+        };
+      };
+      axios
+        .patch("/ordered_items/" + the_item.id, editItemParams)
         .then((response) => {
           console.log("ordered item update", response);
           this.$router.push("/ordered_items");
