@@ -1,26 +1,45 @@
 <template>
   <div class="ordereditems-index" style="margin: auto; text-align: center;">
-    <br/>
+    <br />
     <h1>{{ message }}</h1>
-    <br/>
+    <br />
     <p v-if="ordered_items.length === 0">There's nothing in your order!</p>
     <a href="/products" class="btn btn-secondary">Back to Menu</a>
-    <br/>
-    <br/>
-    <a v-if="ordered_items.length !== 0" v-on:click="checksCreate()" class="btn btn-primary">Check Out</a>
-    <br/>
-    <br/>
-
-      <form v-if="ordered_items.length !== 0" >
+    <br />
+    <br />
+    <a
+      v-if="ordered_items.length !== 0"
+      v-on:click="checksCreate()"
+      class="btn btn-primary"
+      >Check Out</a
+    >
+    <br />
+    <br />
+    {{ dining_option }}
+    <form v-if="ordered_items.length !== 0">
       <h3>Please select your dining experience:</h3>
-        <input type="radio" name="dining_option" value="Dine In" id="choice-dine-in" v-model="dining_option"> 
-        <label for="choice-yes">Dine In</label>
-        <input type="radio" name="dining_option" value="Take Out" id="choice-take-out" v-model="dining_option">
-        <label for="choice-no">Take Out</label>
-        <br />
-        <br />
-        <a v-on:click="updateForKitchen(the_item)" class="btn btn-success">Place Order</a>
-      </form>
+      <input
+        type="radio"
+        name="dining_option"
+        value="Dine In"
+        id="choice-dine-in"
+        v-model="dining_option"
+      />
+      <label for="choice-yes">Dine In</label>
+      <input
+        type="radio"
+        name="dining_option"
+        value="Take Out"
+        id="choice-take-out"
+        v-model="dining_option"
+      />
+      <label for="choice-no">Take Out</label>
+      <br />
+      <br />
+      <a v-on:click="updateForKitchen()" class="btn btn-success"
+        >Place Order</a
+      >
+    </form>
 
       <!-- <form v-if="ordered_items.length !== 0">
       <h3>Please select your dining experience:</h3>
@@ -35,41 +54,59 @@
       </form> -->
 
     <br />
-    <div class="card mb-3" style="margin: auto; max-width: 540px;" v-for="ordered_item in ordered_items" v-bind:key="ordered_item.id">
+    <div
+      class="card mb-3"
+      style="margin: auto; max-width: 540px"
+      v-for="ordered_item in ordered_items"
+      v-bind:key="ordered_item.id"
+    >
       <div class="row g-0">
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">Item: {{ ordered_item.product_item_name }}</h5>
+            <h5 class="card-title">
+              Item: {{ ordered_item.product_item_name }}
+            </h5>
             <p class="card-text">
-            Price: {{ ordered_item.product_price }}
-            <br/>
-            Quantity: {{ ordered_item.quantity }}
-            <br/>
-            Status: {{ ordered_item.status }}
-            <br/>
-            Dining Option: {{ ordered_item.dining_option }}
-            <br/>
-            Note: {{ ordered_item.customer_note }}
+              Price: {{ ordered_item.product_price }}
+              <br />
+              Quantity: {{ ordered_item.quantity }}
+              <br />
+              Status: {{ ordered_item.status }}
+              <br />
+              Dining Option: {{ dining_option }}
+              <br />
+              Note: {{ ordered_item.customer_note }}
             </p>
             <p class="card-text"><small class="text-muted"></small></p>
           </div>
         </div>
         <div class="col-md-4">
           <p class="card-text">
-            Update Quantity: <input type="number" v-model="ordered_item.quantity">
-            <br/>
-            Special Instructions: <input type="text" v-model="ordered_item.customer_note">
+            Update Quantity:
+            <input type="number" v-model="ordered_item.quantity" />
+            <br />
+            Special Instructions:
+            <input type="text" v-model="ordered_item.customer_note" />
           </p>
           <form>
-            <button v-on:click="updateOrderedItem(ordered_item)" class="btn btn-warning btn-sm">Update Item</button>
+            <button
+              v-on:click="updateOrderedItem(ordered_item)"
+              class="btn btn-warning btn-sm"
+            >
+              Update Item
+            </button>
           </form>
-          <form style="margin: 0.3em;">
-            <button v-on:click="orderedItemDestroy(ordered_item)" class="btn btn-danger btn-sm">Remove Item</button>
+          <form style="margin: 0.3em">
+            <button
+              v-on:click="orderedItemDestroy(ordered_item)"
+              class="btn btn-danger btn-sm"
+            >
+              Remove Item
+            </button>
           </form>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -86,6 +123,7 @@ export default {
       dining_option: null,
       the_ordered_item: {},
       errors: [],
+      status: "",
       // searchTerm: "",
     };
   },
@@ -121,7 +159,7 @@ export default {
       var editOrderedItemParams = {
         quantity: ordered_item.quantity,
         customer_note: ordered_item.customer_note,
-      };;
+      };
       axios
         .patch("/ordered_items/" + ordered_item.id, editOrderedItemParams)
         .then((response) => {
@@ -133,28 +171,17 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    updateForKitchen: function (the_item) {
-      for (this.the_ordered_item in this.ordered_items) {
-        if (this.the_ordered_item.status === "ordered") {
-          console.log(this.the_ordered_item.id)
-          var editItemParams = {
-          status: "sent",
-          quantity: this.the_ordered_item.quantity,
-          dining_option: the_item.dining_option,
-          };
-        };
-      };
+    updateForKitchen: function () {
       axios
-        .patch("/ordered_items/" + the_item.id, editItemParams)
+        .post("/kitchen_orders")
         .then((response) => {
-          console.log("ordered item update", response);
+          console.log(response.data);
           this.$router.push("/ordered_items");
         })
         .catch((error) => {
-          console.log("ordered item update error", error.response);
           this.errors = error.response.data.errors;
         });
-    }
+    },
   },
 };
 </script>
