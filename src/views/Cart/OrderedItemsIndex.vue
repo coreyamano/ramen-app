@@ -1,22 +1,31 @@
 <template>
-  <div class="ordereditems-index" style="margin: auto; text-align: center;">
+  <div class="ordereditems-index" style="margin: auto; text-align: center">
     <br />
     <h1>{{ message }}</h1>
     <br />
-    <p v-if="ordered_items.length === 0">There's nothing in your order!</p>
+    <p v-if="ordered_items.length === 0">
+      There's nothing to send to the kitchen!
+    </p>
+    <p
+      v-else-if="
+        ordered_items.length > 0 && ordered_items[0].status === 'ordered'
+      "
+    >
+      Confirm below to place order.
+    </p>
     <a href="/products" class="btn btn-secondary">Back to Menu</a>
     <br />
-    <br />
     <a
-      v-if="ordered_items.length !== 0"
+      v-if="ordered_items.length !== 0 && ordered_items[0].status !== 'ordered'"
       v-on:click="checksCreate()"
       class="btn btn-primary"
       >Check Out</a
     >
     <br />
-    <br />
     {{ dining_option }}
-    <form v-if="ordered_items.length !== 0">
+    <form
+      v-if="ordered_items.length !== 0 && ordered_items[0].status === 'ordered'"
+    >
       <h3>Please select your dining experience:</h3>
       <input
         type="radio"
@@ -176,7 +185,7 @@ export default {
         .post("/kitchen_orders")
         .then((response) => {
           console.log(response.data);
-          this.$router.push("/ordered_items");
+          // this.$router.push("/ordered_items");
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

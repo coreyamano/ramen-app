@@ -21,25 +21,11 @@
           <br />
           Status: {{ check.status }}
         </p>
-        <a href="#" class="btn btn-primary">Pay Now</a>
+        <a class="btn btn-primary" v-on:click="updateCheck(check)">Pay Now</a>
       </div>
       <div class="card-footer text-muted">Thank you! Please Come Again!</div>
     </div>
   </div>
-
-    <!-- <div v-for="check in checks" v-bind:key="check.id"> -->
-      <!-- <p>Check Number: {{ check.id }}</p>
-      <p>Subtotal: {{ check.subtotal }}</p>
-      <p>Tax: {{ check.tax }}</p>
-      <p>Total: {{ check.total }}</p>
-      <p>Status: {{ check.status }}</p>
-      <br /> -->
-      <!-- <p>{{ product.image }}</p> -->
-      <!-- <router-link v-bind:to="`/products/${product.id}`">
-        <img v-bind:src="products.image" /> -->
-      <!-- </router-link> -->
-    <!-- </div> -->
-
 </template>
 
 <style></style>
@@ -51,6 +37,7 @@ export default {
     return {
       message: "Check Out",
       checks: [],
+      check: {},
       // searchTerm: "",
     };
   },
@@ -64,17 +51,18 @@ export default {
         this.checks = response.data;
       });
     },
-    // checksCreate: function () {
-    //   axios
-    //     .post("/checks")
-    //     .then((response) => {
-    //       console.log(response.data);
-    //       this.$router.push("/checks");
-    //     })
-    //     .catch((error) => {
-    //       this.errors = error.response.data.errors;
-    //     });
-    // },
+    updateCheck: function (check) {
+      var editCheckParams = check;
+      axios
+        .patch("/checks/" + check.id, editCheckParams)
+        .then((response) => {
+          console.log(response.data);
+          // this.$router.push("/checks");
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
+    },
   },
 };
 </script>

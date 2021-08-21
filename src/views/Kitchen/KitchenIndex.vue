@@ -1,8 +1,8 @@
 <template>
   <div class="kitchen-index">
-  <br/>
-    <h1 style="margin: auto;">{{ message }}</h1>
-    <br/>
+    <br />
+    <h1 style="margin: auto">{{ message }}</h1>
+    <br />
     <div
       class="card mb-3"
       style="margin: auto; max-width: 540px"

@@ -28,7 +28,7 @@
           aria-label="Slide 3"
         ></button>
       </div>
-      <div class="carousel-inner">
+      <div class="carousel-inner" style="width: 70%; flex-wrap: wrap; margin: auto">
         <div class="carousel-item active">
           <img
             src="https://ippudo-us.com/wordpress/wp-content/themes/ippudo-theme/images/menu/img_noodles.jpg"
@@ -97,22 +97,6 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-
-<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
-
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <img src="https://ippudo-us.com/wordpress/wp-content/themes/ippudo-theme/images/menu/img_noodles.jpg" class="rounded me-2" alt="...">
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
-</div>
   </div>
 </template>
 
