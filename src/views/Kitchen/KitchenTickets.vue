@@ -3,23 +3,6 @@
     <br />
     <h1 style="margin: auto">{{ message }}</h1>
     <br />
-    <ul>
-      <li
-        v-for="kitchen_ticket in kitchen_tickets"
-        v-bind:key="kitchen_ticket.id"
-      >
-        {{ kitchen_ticket.product_item_name }}
-        {{ kitchen_ticket.status }}
-        <form>
-        <button
-          class="btn btn-warning btn-sm"
-          v-on:click="updateComplete(ordered_item)"
-        >
-          Mark as Complete
-        </button>
-        </form>
-      </li>
-    </ul>
     <div
       class="card mb-3"
       style="margin: auto; max-width: 540px"
@@ -48,7 +31,7 @@
           <form>
             <button
               class="btn btn-warning btn-sm"
-              v-on:click="updateComplete(kitchen_item)"
+              v-on:click="updateToComplete(kitchen_ticket)"
             >
               Mark as Complete
             </button>
@@ -89,15 +72,30 @@ export default {
         this.kitchen_tickets = response.data;
       });
     },
-    updateOrderedItem: function (ordered_item) {
+    updateToComplete: function (kitchen_ticket) {
       var editOrderedItemParams = {
-        status: "complete",
+        status: "completed",
       };
       axios
-        .patch("/ordered_items/" + ordered_item.id, editOrderedItemParams)
+        .patch("/ordered_items/" + kitchen_ticket.id, editOrderedItemParams)
         .then((response) => {
           console.log("ordered item update", response);
-          this.$router.push("/ordered_items");
+          this.$router.push("/kitchen_tickets");
+        })
+        .catch((error) => {
+          console.log("ordered item update error", error.response);
+          this.errors = error.response.data.errors;
+        });
+    },
+    updateToPreparing: function (kitchen_ticket) {
+      var editOrderedItemParams = {
+        status: "preparing",
+      };
+      axios
+        .patch("/ordered_items/" + kitchen_ticket.id, editOrderedItemParams)
+        .then((response) => {
+          console.log("ordered item update", response);
+          this.$router.push("/kitchen_tickets");
         })
         .catch((error) => {
           console.log("ordered item update error", error.response);

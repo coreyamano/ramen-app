@@ -8,7 +8,8 @@
     </p>
     <a href="/products" class="btn btn-secondary">Back to Menu</a>
     <br />
-    <a v-on:click="checksCreate()" class="btn btn-primary">Check Out</a>
+    <br />
+    <a href="/order_status" class="btn btn-primary">Check Order Status</a>
     <br />
     <form v-if="ordered_items.length !== 0">
       <h3>Please select your dining experience:</h3>
@@ -32,19 +33,6 @@
       <br />
       <a v-on:click="updateForKitchen()" class="btn btn-success">Place Order</a>
     </form>
-
-      <!-- <form v-if="ordered_items.length !== 0">
-      <h3>Please select your dining experience:</h3>
-        <input type="radio" name="choice" value="Dine In" id="choice-dine-in" v-model="ordered_item.dining_option"> 
-        <label for="choice-yes">Dine In</label>
-        <input type="radio" name="choice" value="Take Out" id="choice-take-out" v-model="ordered_item.dining_option">
-        <label for="choice-no">Take Out</label>
-        <br />
-        <br />
-        <a class="btn btn-success">Place Order</a>
-        v-on:click="orderedItemsUpdate()"
-      </form> -->
-
     <br />
     <div
       class="card mb-3"
@@ -61,8 +49,6 @@
             <p class="card-text">
               Price: {{ ordered_item.product_price }}
               <br />
-              Quantity: {{ ordered_item.quantity }}
-              <br />
               Status: {{ ordered_item.status }}
               <br />
               Dining Option: {{ dining_option }}
@@ -74,8 +60,6 @@
         </div>
         <div class="col-md-4" style="background-color:#595260">
           <p class="card-text">
-            Update Quantity:
-            <input type="number" v-model="ordered_item.quantity" />
             <br />
             Special Instructions:
             <input type="text" v-model="ordered_item.customer_note" />
@@ -99,6 +83,7 @@
         </div>
       </div>
     </div>
+    <br />
   </div>
 </template>
 
@@ -149,7 +134,6 @@ export default {
 
     updateOrderedItem: function (ordered_item) {
       var editOrderedItemParams = {
-        quantity: ordered_item.quantity,
         customer_note: ordered_item.customer_note,
       };
       axios
@@ -171,7 +155,7 @@ export default {
         .post("/kitchen_orders", params)
         .then((response) => {
           console.log(response.data);
-          this.$router.push("/ordered_items");
+          this.$router.push("/order_updates");
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

@@ -9,22 +9,16 @@
         <p class="card-text">
           Thank you for dining with us! We look forward to serving you again.
         </p>
-        <a href="/logout" class="btn btn-primary">Goodbye!</a>
+        <a href="/" class="btn btn-primary">Home</a>
       </div>
       <div class="card-footer text-muted"></div>
     </div>
     <br />
     <br />
-    <button @click="showAlert">Hello world</button>
   </div>
 </template>
 <script>
 export default {
-  methods: {
-    showAlert() {
-      // Use sweetalert2
-      this.$swal('Hello Vue world!!!');
-    },
-  },
+  methods: {},
 };
 </script>

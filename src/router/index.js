@@ -6,6 +6,7 @@ import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import ProductsIndex from "../views/Menu/ProductsIndex.vue";
 import OrderedItemsIndex from "../views/Cart/OrderedItemsIndex.vue";
+import OrderedItemsStatus from "../views/Cart/OrderedItemsStatus.vue";
 import ChecksShow from "../views/Checks/ChecksShow.vue";
 import KitchenIndex from "../views/Kitchen/KitchenIndex.vue";
 import KitchenTickets from "../views/Kitchen/KitchenTickets.vue";
@@ -35,6 +36,11 @@ const routes = [
     path: "/ordered_items",
     name: "OrderedItemsIndex",
     component: OrderedItemsIndex,
+  },
+  {
+    path: "/order_updates",
+    name: "OrderedItemsStatus",
+    component: OrderedItemsStatus,
   },
   {
     path: "/checks",

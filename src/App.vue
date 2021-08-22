@@ -18,28 +18,31 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/products"
+              <a class="nav-link" aria-current="page" href="/products"
                 >Menu</a
               >
-            </li>
+            </li> ||
             <li class="nav-item">
               <a class="nav-link" href="/ordered_items">Cart</a>
-            </li>
+            </li> || 
+            <li class="nav-item">
+              <a class="nav-link" href="/order_updates">Order Status</a>
+            </li> ||
             <li class="nav-item">
               <a class="nav-link" href="/checks">Check Out</a>
-            </li>
+            </li> ||
 
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/login">Log In</a>
-            </li>
+            </li> ||
 
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/logout">Log Out</a>
-            </li>
+            </li> ||
 
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/signup">Sign Up</a>
-            </li>
+            </li> ||
             <!-- <form class="d-flex">
               <a class="btn btn-outline-dark" href="/ordered_items">
                 <i class="bi-cart-fill me-1"></i>
