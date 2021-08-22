@@ -31,6 +31,8 @@
       </div>
       <div class="card-footer" style="background-color: #b2b1b9; color: #595260">Thank you! Please Come Again!</div>
     </div>
+    <br />
+    <br />
   </div>
 </template>
 
@@ -74,7 +76,7 @@ export default {
         .patch("/checks/" + check.id, editCheckParams)
         .then((response) => {
           console.log(response.data);
-          this.$router.push("/checks");
+          this.$router.push("/thankyou");
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

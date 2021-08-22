@@ -164,8 +164,11 @@ export default {
         });
     },
     updateForKitchen: function () {
+      var params = {
+        dining_option: this.dining_option,
+      }
       axios
-        .post("/kitchen_orders")
+        .post("/kitchen_orders", params)
         .then((response) => {
           console.log(response.data);
           this.$router.push("/ordered_items");
