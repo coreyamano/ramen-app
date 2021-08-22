@@ -28,7 +28,10 @@
           aria-label="Slide 3"
         ></button>
       </div>
-      <div class="carousel-inner" style="width: 70%; flex-wrap: wrap; margin: auto">
+      <div
+        class="carousel-inner"
+        style="width: 70%; flex-wrap: wrap; margin: auto"
+      >
         <div class="carousel-item active">
           <img
             src="https://ippudo-us.com/wordpress/wp-content/themes/ippudo-theme/images/menu/img_noodles.jpg"

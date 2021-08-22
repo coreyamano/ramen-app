@@ -22,7 +22,6 @@
       >Check Out</a
     >
     <br />
-    {{ dining_option }}
     <form
       v-if="ordered_items.length !== 0 && ordered_items[0].status === 'ordered'"
     >
@@ -45,9 +44,7 @@
       <label for="choice-no">Take Out</label>
       <br />
       <br />
-      <a v-on:click="updateForKitchen()" class="btn btn-success"
-        >Place Order</a
-      >
+      <a v-on:click="updateForKitchen()" class="btn btn-success">Place Order</a>
     </form>
 
       <!-- <form v-if="ordered_items.length !== 0">
@@ -185,7 +182,7 @@ export default {
         .post("/kitchen_orders")
         .then((response) => {
           console.log(response.data);
-          // this.$router.push("/ordered_items");
+          this.$router.push("/ordered_items");
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
