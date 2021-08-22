@@ -1,5 +1,5 @@
 <template>
-  <div class="signup">
+  <div class="signup" style="background-color: #2C2E43; color: #b2b1b9">
     <form v-on:submit.prevent="submit()">
       <h1>Signup</h1>
       <ul>

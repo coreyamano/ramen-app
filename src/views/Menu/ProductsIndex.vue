@@ -1,7 +1,7 @@
 <template>
-  <div class="products-index" style="margin: auto">
+  <div class="products-index" style="margin: auto; background-color: #2c2e43">
     <br />
-    <h1>{{ message }}</h1>
+    <h1 style="color: #b2b1b9">{{ message }}</h1>
     <section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
         <div
@@ -17,7 +17,10 @@
             v-for="product in products"
             v-bind:key="product.id"
           >
-            <div class="card h-100" style="padding: 0.4em">
+            <div
+              class="card h-100"
+              style="padding: 0.4em; background-color: #595260; color: #b2b1b9"
+            >
               <!-- Product image-->
               <!-- <router-link v-bind:to="`/products/${product.id}`"> -->
               <img class="card-img-top" v-bind:src="product.image" alt="..." />

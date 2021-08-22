@@ -1,12 +1,14 @@
 <template>
-  <div class="home">
+  <div class="home" style="background-color: #2C2E43; color: #b2b1b9">
+    <br />
+    <br />
     <div
       id="carouselExampleCaptions"
       class="carousel slide"
       data-bs-ride="carousel"
-      style="margin: 2em"
+      style="background-color: #2C2E43"
     >
-      <div class="carousel-indicators">
+      <div class="carousel-indicators" >
         <button
           type="button"
           data-bs-target="#carouselExampleCaptions"
@@ -30,7 +32,7 @@
       </div>
       <div
         class="carousel-inner"
-        style="width: 70%; flex-wrap: wrap; margin: auto"
+        style="width: 50%; flex-wrap: wrap; margin: auto"
       >
         <div class="carousel-item active">
           <img
@@ -100,10 +102,14 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+    <br />
+    <br />
   </div>
 </template>
 
-<style></style>
+<style>
+
+</style>
 
 <script>
 export default {

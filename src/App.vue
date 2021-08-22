@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container px-4 px-lg-5">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container px-4 px-lg-5" >
         <a class="navbar-brand" href="/">Ramen Land</a>
         <button
           class="navbar-toggler"
@@ -77,7 +77,7 @@
     <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">
-          Copyright &copy; Your Website 2021
+          Copyright &copy; TurningTables 2021
         </p>
       </div>
     </footer>

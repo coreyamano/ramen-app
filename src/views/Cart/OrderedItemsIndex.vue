@@ -1,5 +1,5 @@
 <template>
-  <div class="ordereditems-index" style="margin: auto; text-align: center">
+  <div class="ordereditems-index" style="margin: auto; text-align: center; background-color: #2C2E43; color: #b2b1b9">
     <br />
     <h1>{{ message }}</h1>
     <br />
@@ -54,7 +54,7 @@
     >
       <div class="row g-0">
         <div class="col-md-8">
-          <div class="card-body">
+          <div class="card-body" style="background-color: #595260">
             <h5 class="card-title">
               Item: {{ ordered_item.product_item_name }}
             </h5>
@@ -72,7 +72,7 @@
             <p class="card-text"><small class="text-muted"></small></p>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="background-color:#595260">
           <p class="card-text">
             Update Quantity:
             <input type="number" v-model="ordered_item.quantity" />
