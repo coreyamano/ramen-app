@@ -11,6 +11,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
+import Popper from 'popper.js'
+Popper.Defaults.modifiers.computeStyle.gpuAcceleration = false
 // import { createPopper } from "@popperjs/core";
 
 axios.defaults.baseURL =

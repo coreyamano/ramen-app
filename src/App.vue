@@ -22,7 +22,9 @@
                 >Menu</a
               >
             </li>
-
+            <li class="nav-item">
+              <a class="nav-link" href="/ordered_items">Cart</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="/checks">Check Out</a>
             </li>
@@ -38,7 +40,7 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/signup">Sign Up</a>
             </li>
-            <form class="d-flex">
+            <!-- <form class="d-flex">
               <a class="btn btn-outline-dark" href="/ordered_items">
                 <i class="bi-cart-fill me-1"></i>
                 Cart
@@ -46,7 +48,7 @@
                   >0</span
                 >
               </a>
-            </form>
+            </form> -->
           </ul>
         </div>
       </div>

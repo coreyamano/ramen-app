@@ -8,6 +8,7 @@ import ProductsIndex from "../views/Menu/ProductsIndex.vue";
 import OrderedItemsIndex from "../views/Cart/OrderedItemsIndex.vue";
 import ChecksShow from "../views/Checks/ChecksShow.vue";
 import KitchenIndex from "../views/Kitchen/KitchenIndex.vue";
+import KitchenTickets from "../views/Kitchen/KitchenTickets.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -38,6 +39,11 @@ const routes = [
     path: "/kitchen_orders",
     name: "KitchenIndex",
     component: KitchenIndex,
+  },
+  {
+    path: "/kitchen_tickets",
+    name: "KitchenTickets",
+    component: KitchenTickets,
   },
 ];
 

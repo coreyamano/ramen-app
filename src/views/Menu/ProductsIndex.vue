@@ -19,13 +19,9 @@
           >
             <div class="card h-100" style="padding: 0.4em">
               <!-- Product image-->
-              <router-link v-bind:to="`/products/${product.id}`">
-                <img
-                  class="card-img-top"
-                  v-bind:src="product.image"
-                  alt="..."
-                />
-              </router-link>
+              <!-- <router-link v-bind:to="`/products/${product.id}`"> -->
+              <img class="card-img-top" v-bind:src="product.image" alt="..." />
+              <!-- </router-link> -->
               <!-- Product details-->
               <div class="card-body p-4">
                 <div class="text-center">
@@ -44,6 +40,28 @@
               <br />
               <!-- Product actions-->
               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Added to Cart</h5>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">{{ product.item_name }} was added!</div>
+                    </div>
+                  </div>
+                </div>
                 <div class="text-center">
                   <a
                     tabindex="0"
@@ -70,6 +88,7 @@
 
 <script>
 import axios from "axios";
+import { createPopper } from '@popperjs/core';
 export default {
   data: function () {
     return {
@@ -80,6 +99,11 @@ export default {
       tab_id: "",
       // searchTerm: "",
     };
+  },
+  mounted(){
+  const button = document.querySelector('#button');
+  const tooltip = document.querySelector('#tooltip');
+  createPopper(button, tooltip);
   },
   created: function () {
     this.indexProducts();

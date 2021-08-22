@@ -3,6 +3,12 @@
     <br />
     <h1 style="margin: auto">{{ message }}</h1>
     <br />
+    <p style="text-align: center">
+      Ready to pay? Click the button below to generate your check!
+      <br />
+      <br />
+      <a v-on:click="checksCreate()" class="btn btn-primary">Check Out</a>
+    </p>
     <div
       class="card text-center"
       style="width: 50%; margin: auto"
@@ -50,6 +56,17 @@ export default {
         console.log(response.data);
         this.checks = response.data;
       });
+    },
+    checksCreate: function () {
+      axios
+        .post("/checks")
+        .then((response) => {
+          console.log(response.data);
+          this.$router.push("/checks");
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
     },
     updateCheck: function (check) {
       var editCheckParams = check;

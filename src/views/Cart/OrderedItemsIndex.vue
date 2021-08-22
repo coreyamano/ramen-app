@@ -6,25 +6,11 @@
     <p v-if="ordered_items.length === 0">
       There's nothing to send to the kitchen!
     </p>
-    <p
-      v-else-if="
-        ordered_items.length > 0 && ordered_items[0].status === 'ordered'
-      "
-    >
-      Confirm below to place order.
-    </p>
     <a href="/products" class="btn btn-secondary">Back to Menu</a>
     <br />
-    <a
-      v-if="ordered_items.length !== 0 && ordered_items[0].status !== 'ordered'"
-      v-on:click="checksCreate()"
-      class="btn btn-primary"
-      >Check Out</a
-    >
+    <a v-on:click="checksCreate()" class="btn btn-primary">Check Out</a>
     <br />
-    <form
-      v-if="ordered_items.length !== 0 && ordered_items[0].status === 'ordered'"
-    >
+    <form v-if="ordered_items.length !== 0">
       <h3>Please select your dining experience:</h3>
       <input
         type="radio"
@@ -126,7 +112,7 @@ export default {
     return {
       message: "Your Order",
       ordered_items: [],
-      dining_option: null,
+      dining_option: "",
       the_ordered_item: {},
       errors: [],
       status: "",
