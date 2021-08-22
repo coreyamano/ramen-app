@@ -9,7 +9,7 @@
         <p class="card-text">
           Thank you for dining with us! We look forward to serving you again.
         </p>
-        <a href="/" class="btn btn-primary">Home</a>
+        <a href="/logout" class="btn btn-primary">Goodbye!</a>
       </div>
       <div class="card-footer text-muted"></div>
     </div>
