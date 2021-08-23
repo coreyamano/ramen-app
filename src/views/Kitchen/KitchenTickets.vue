@@ -12,7 +12,7 @@
       <div class="row g-0">
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">Tab: {{ kitchen_ticket.tab_id }}</h5>
+            <h5 class="card-title">Tab: {{ kitchen_ticket.tab_name }}</h5>
             <p class="card-text">
               Item: {{ kitchen_ticket.product_item_name }}
               <br />

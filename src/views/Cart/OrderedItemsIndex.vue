@@ -12,6 +12,8 @@
     <a href="/order_status" class="btn btn-primary">Check Order Status</a>
     <br />
     <form v-if="ordered_items.length !== 0">
+      <h3>Please enter your name for the order:</h3>
+      <input type="text" v-model="tab_name" />
       <h3>Please select your dining experience:</h3>
       <input
         type="radio"
@@ -97,9 +99,10 @@ export default {
     return {
       message: "Your Order",
       ordered_items: [],
-      dining_option: "",
+      dining_option: null,
       the_ordered_item: {},
       errors: [],
+      tab_name: "",
       status: "",
       // searchTerm: "",
     };
@@ -150,6 +153,7 @@ export default {
     updateForKitchen: function () {
       var params = {
         dining_option: this.dining_option,
+        tab_name: this.tab_name,
       }
       axios
         .post("/kitchen_orders", params)
