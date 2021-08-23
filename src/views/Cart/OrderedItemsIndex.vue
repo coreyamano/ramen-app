@@ -9,7 +9,7 @@
     <a href="/products" class="btn btn-secondary">Back to Menu</a>
     <br />
     <br />
-    <a href="/order_status" class="btn btn-primary">Check Order Status</a>
+    <a href="/order_updates" class="btn btn-primary">Check Order Status</a>
     <br />
     <form v-if="ordered_items.length !== 0">
       <h3>Please enter your name for the order:</h3>

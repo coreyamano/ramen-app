@@ -20,7 +20,7 @@
       v-bind:key="ordered_item.id"
     >
       <div class="row g-0">
-        <div class="col-md-8">
+        <div class="col-md-12">
           <div class="card-body" style="background-color: #595260">
             <h5 class="card-title">
               Item: {{ ordered_item.product_item_name }}

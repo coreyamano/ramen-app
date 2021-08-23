@@ -68,7 +68,7 @@ export default {
   //   },
   // },
   created: function () {
-    this.indexKitchenOrders();
+    this.$router.push("/kitchen_tickets");
   },
   methods: {
     indexKitchenOrders: function () {
