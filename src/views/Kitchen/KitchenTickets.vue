@@ -1,5 +1,5 @@
 <template>
-  <div class="kitchen-index">
+  <div class="kitchen-index" style="background-color: #2c2e43; color: #b2b1b9">
     <br />
     <h1 style="margin: auto">{{ message }}</h1>
     <br />
@@ -39,6 +39,7 @@
         </div>
       </div>
     </div>
+    <br />
   </div>
 </template>
 

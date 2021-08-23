@@ -27,7 +27,7 @@
           <br />
           Status: {{ check.status }}
         </p>
-        <a class="btn btn-primary" v-on:click="updateCheck(check)">Pay Now</a>
+        <a class="btn btn-dark mt-auto" v-on:click="updateCheck(check)">Pay Now</a>
       </div>
       <div class="card-footer" style="background-color: #b2b1b9; color: #595260">Thank you! Please Come Again!</div>
     </div>
