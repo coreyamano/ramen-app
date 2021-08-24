@@ -15,8 +15,8 @@
         >
           <div
             class="col mb-5"
-            v-for="kitchen_ticket in kitchen_tickets"
-            v-bind:key="kitchen_ticket.id"
+            v-for="ordered_item in ordered_items"
+            v-bind:key="ordered_item.id"
           >
             <div
               class="card h-100"
@@ -26,30 +26,33 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">Tab: {{ kitchen_ticket.tab_name }}</h5>
+                  <h5 class="fw-bolder">Tab: {{ ordered_item.tab_name }}</h5>
                   <!-- Product price-->
-                  Item: {{ kitchen_ticket.product_item_name }}
-              <br />
-              Time: {{ kitchen_ticket.submitted_time }}
-              <br />
-              Note: {{ kitchen_ticket.customer_note }}
-              <br />
-              Dining Option: {{ kitchen_ticket.dining_option }}
-              <br />
-              Status: {{ kitchen_ticket.status }}
-              <!-- Product actions-->
-              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                
-                  </div>
+                  Item: {{ ordered_item.product_item_name }}
+                  <br />
+                  Time: {{ ordered_item.submitted_time }}
+                  <br />
+                  Note: {{ ordered_item.customer_note }}
+                  <br />
+                  Dining Option: {{ ordered_item.dining_option }}
+                  <br />
+                  Status: {{ ordered_item.status }}
+                  <!-- Product actions-->
+                  <div
+                    class="card-footer p-4 pt-0 border-top-0 bg-transparent"
+                  ></div>
                 </div>
                 <div class="text-center">
-                  <a
-                    tabindex="0"
-                    class="btn btn-warning btn-sm"
-                    type="button"
-                    v-on:click="updateToComplete(kitchen_ticket)"
-                    >Mark as Complete</a
-                  >
+                  <form>
+                    <button
+                      tabindex="0"
+                      class="btn btn-warning btn-sm"
+                      type="button"
+                      v-on:click="updateToCompleted(ordered_item)"
+                    >
+                      Mark as Complete
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -70,8 +73,9 @@ export default {
   data: function () {
     return {
       message: "Kitchen Orders",
-      kitchen_tickets: [],
-      kitchen_ticket: {},
+      ordered_items: [],
+      ordered_item: {},
+      status: "",
       // searchTerm: "",
     };
   },
@@ -88,15 +92,15 @@ export default {
     indexKitchenTickets: function () {
       axios.get("/kitchen_tickets").then((response) => {
         console.log(response.data);
-        this.kitchen_tickets = response.data;
+        this.ordered_items = response.data;
       });
     },
-    updateToComplete: function (kitchen_ticket) {
+    updateToCompleted: function (ordered_item) {
       var editOrderedItemParams = {
         status: "completed",
       };
       axios
-        .patch("/ordered_items/" + kitchen_ticket.id, editOrderedItemParams)
+        .patch("/ordered_items/" + ordered_item.id, editOrderedItemParams)
         .then((response) => {
           console.log("ordered item update", response);
           this.$router.push("/kitchen_tickets");
@@ -106,21 +110,21 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    updateToPreparing: function (kitchen_ticket) {
-      var editOrderedItemParams = {
-        status: "preparing",
-      };
-      axios
-        .patch("/ordered_items/" + kitchen_ticket.id, editOrderedItemParams)
-        .then((response) => {
-          console.log("ordered item update", response);
-          this.$router.push("/kitchen_orders");
-        })
-        .catch((error) => {
-          console.log("ordered item update error", error.response);
-          this.errors = error.response.data.errors;
-        });
-    },
+    // updateToPreparing: function (kitchen_ticket) {
+    //   var editOrderedItemParams = {
+    //     status: "preparing",
+    //   };
+    //   axios
+    //     .patch("/ordered_items/" + kitchen_ticket.id, editOrderedItemParams)
+    //     .then((response) => {
+    //       console.log("ordered item update", response);
+    //       this.$router.push("/kitchen_tickets");
+    //     })
+    //     .catch((error) => {
+    //       console.log("ordered item update error", error.response);
+    //       this.errors = error.response.data.errors;
+    //     });
+    // },
   },
 };
 </script>

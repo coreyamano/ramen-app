@@ -53,7 +53,9 @@
                   <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Added to Cart</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          Added to Cart
+                        </h5>
                         <button
                           type="button"
                           class="btn-close"
@@ -61,14 +63,16 @@
                           aria-label="Close"
                         ></button>
                       </div>
-                      <div class="modal-body">{{ product.item_name }} was added!</div>
+                      <div class="modal-body">
+                        {{ product.item_name }} was added!
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="text-center">
                   <a
                     tabindex="0"
-                    class="btn btn-outline-dark mt-auto"
+                    class="btn btn-dark mt-auto"
                     type="button"
                     v-on:click="orderedItemsCreate(product)"
                     data-bs-container="body"
@@ -91,7 +95,6 @@
 
 <script>
 import axios from "axios";
-import { createPopper } from '@popperjs/core';
 export default {
   data: function () {
     return {
@@ -102,11 +105,6 @@ export default {
       tab_id: "",
       // searchTerm: "",
     };
-  },
-  mounted(){
-  const button = document.querySelector('#button');
-  const tooltip = document.querySelector('#tooltip');
-  createPopper(button, tooltip);
   },
   created: function () {
     this.indexProducts();
