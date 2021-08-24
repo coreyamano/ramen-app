@@ -51,9 +51,9 @@
                   aria-hidden="true"
                 >
                   <div class="modal-dialog modal-md">
-                    <div class="modal-content">
-                      <div class="modal-header" style="background-color: #b2b1b9; color: #595260;">
-                        <h5 class="modal-title" id="exampleModalLabel">
+                    <div class="modal-content" style="padding: 0.4em; margin: auto; background-color: #595260; text-align: center;">
+                      <div class="modal-header" style="background-color: #b2b1b9; color: #595260; ">
+                        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center;">
                           Added to Cart!
                         </h5>
                         <button
@@ -63,7 +63,7 @@
                           aria-label="Close"
                         ></button>
                       </div>
-                      <div class="modal-body" style="background-color: #595260;">
+                      <div class="modal-body">
                         Go to Cart to send your order to the kitchen or add more items!
                       </div>
                       <div class="modal-footer" style="background-color: #b2b1b9; color: #595260;">
@@ -76,7 +76,7 @@
                 <div class="text-center">
                   <button
                     tabindex="0"
-                    class="btn btn-dark" data-bs-toggle="modal"
+                    class="btn btn-dark mt-auto" data-bs-toggle="modal"
                     type="button"
                     v-on:click="orderedItemsCreate(product)"
                     data-bs-target="#exampleModal"

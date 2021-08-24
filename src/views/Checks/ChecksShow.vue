@@ -27,7 +27,7 @@
           <br />
           Status: {{ check.status }}
         </p>
-        <a href="https://buy.stripe.com/test_14k6rqaAV35Q8HS288" class="btn btn-dark mt-auto" >Pay Now</a>
+        <a href="https://buy.stripe.com/test_28o4ji38t7m6cY83ce" class="btn btn-dark mt-auto" v-on:click="updateCheck(check)">Pay Now</a>
       </div>
       <div class="card-footer" style="background-color: #b2b1b9; color: #595260">Thank you! Please Come Again!</div>
     </div>
