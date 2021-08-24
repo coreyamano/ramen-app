@@ -48,9 +48,21 @@
                       tabindex="0"
                       class="btn btn-warning btn-sm"
                       type="button"
+                      v-if="ordered_item.status === 'preparing'"
                       v-on:click="updateToCompleted(ordered_item)"
                     >
                       Mark as Complete
+                    </button>
+                  </form>
+                  <form>
+                    <button
+                      tabindex="0"
+                      class="btn btn-dark btn-sm"
+                      type="button"
+                      v-if="ordered_item.status === 'completed'"
+                      v-on:click="updateToPreparing(ordered_item)"
+                    >
+                      Revert to Preparing
                     </button>
                   </form>
                 </div>
@@ -110,21 +122,21 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    // updateToPreparing: function (kitchen_ticket) {
-    //   var editOrderedItemParams = {
-    //     status: "preparing",
-    //   };
-    //   axios
-    //     .patch("/ordered_items/" + kitchen_ticket.id, editOrderedItemParams)
-    //     .then((response) => {
-    //       console.log("ordered item update", response);
-    //       this.$router.push("/kitchen_tickets");
-    //     })
-    //     .catch((error) => {
-    //       console.log("ordered item update error", error.response);
-    //       this.errors = error.response.data.errors;
-    //     });
-    // },
+    updateToPreparing: function (ordered_item) {
+      var editOrderedItemParams = {
+        status: "preparing",
+      };
+      axios
+        .patch("/ordered_items/" + ordered_item.id, editOrderedItemParams)
+        .then((response) => {
+          console.log("ordered item update", response);
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log("ordered item update error", error.response);
+          this.errors = error.response.data.errors;
+        });
+    },
   },
 };
 </script>

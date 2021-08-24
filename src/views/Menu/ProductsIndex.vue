@@ -52,7 +52,7 @@
                 >
                   <div class="modal-dialog modal-md">
                     <div class="modal-content">
-                      <div class="modal-header">
+                      <div class="modal-header" style="background-color: #b2b1b9; color: #595260;">
                         <h5 class="modal-title" id="exampleModalLabel">
                           Added to Cart!
                         </h5>
@@ -63,13 +63,10 @@
                           aria-label="Close"
                         ></button>
                       </div>
-                      <div class="modal-body">
-                        {{ product.item_name }} was added!
-                        <br />
-                        <br />
-                        Go to Cart to send your order to the kitchen!
+                      <div class="modal-body" style="background-color: #595260;">
+                        Go to Cart to send your order to the kitchen or add more items!
                       </div>
-                      <div class="modal-footer">
+                      <div class="modal-footer" style="background-color: #b2b1b9; color: #595260;">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <a type="button" class="btn btn-primary" href="/ordered_items" >Cart</a>
                       </div>
