@@ -103,7 +103,7 @@ export default {
         .patch("/ordered_items/" + ordered_item.id, editOrderedItemParams)
         .then((response) => {
           console.log("ordered item update", response);
-          this.$router.push("/kitchen_tickets");
+          window.location.reload();
         })
         .catch((error) => {
           console.log("ordered item update error", error.response);

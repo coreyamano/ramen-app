@@ -64,7 +64,7 @@ export default {
         .post("/checks")
         .then((response) => {
           console.log(response.data);
-          this.$router.push("/checks");
+          window.location.reload();
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

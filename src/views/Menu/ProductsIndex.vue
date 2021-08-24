@@ -50,11 +50,11 @@
                   aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
                 >
-                  <div class="modal-dialog modal-sm">
+                  <div class="modal-dialog modal-md">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">
-                          Added to Cart
+                          Added to Cart!
                         </h5>
                         <button
                           type="button"
@@ -65,21 +65,25 @@
                       </div>
                       <div class="modal-body">
                         {{ product.item_name }} was added!
+                        <br />
+                        <br />
+                        Go to Cart to send your order to the kitchen!
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a type="button" class="btn btn-primary" href="/ordered_items" >Cart</a>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="text-center">
-                  <a
+                  <button
                     tabindex="0"
-                    class="btn btn-dark mt-auto"
+                    class="btn btn-dark" data-bs-toggle="modal"
                     type="button"
                     v-on:click="orderedItemsCreate(product)"
-                    data-bs-container="body"
-                    data-bs-toggle="popover"
-                    data-bs-placement="right"
-                    data-bs-content="Added to Cart!"
-                    >Add to Cart</a
+                    data-bs-target="#exampleModal"
+                    >Add to Cart</button
                   >
                 </div>
               </div>
@@ -88,6 +92,29 @@
         </div>
       </div>
     </section>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
   </div>
 </template>
 
