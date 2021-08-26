@@ -2,7 +2,6 @@
   <div class="kitchen-index" style="background-color: #2c2e43; color: #b2b1b9">
     <br />
     <h1 style="margin: auto">{{ message }}</h1>
-    <br />
     <section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
         <div

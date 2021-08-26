@@ -68,7 +68,7 @@
           style="margin: auto; text-shadow: 2px 2px 4px black"
         >
           <h1 class="display-4 fw-bolder">Ramen Land</h1>
-          <p class="lead fw-normal text-white-50 mb-0">San Fracisco, CA</p>
+          <p class="lead fw-normal text-white-30 mb-0" style="text-shadow: 2px 2px 4px black">San Fracisco, CA</p>
         </div>
       </div>
     </header>
