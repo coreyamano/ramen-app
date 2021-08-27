@@ -5,6 +5,7 @@ import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import ProductsIndex from "../views/Menu/ProductsIndex.vue";
+import ProductsCreate from "../views/Menu/ProductsCreate.vue";
 import OrderedItemsIndex from "../views/Cart/OrderedItemsIndex.vue";
 import OrderedItemsStatus from "../views/Cart/OrderedItemsStatus.vue";
 import ChecksShow from "../views/Checks/ChecksShow.vue";
@@ -31,6 +32,11 @@ const routes = [
     path: "/products",
     name: "ProductsIndex",
     component: ProductsIndex,
+  },
+  {
+    path: "/products",
+    name: "ProductsCreate",
+    component: ProductsCreate,
   },
   {
     path: "/ordered_items",
